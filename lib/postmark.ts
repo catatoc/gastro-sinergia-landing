@@ -1,5 +1,5 @@
 import { ServerClient } from "postmark";
-import { buildConfirmationEmail } from "./email-template";
+import { getLogoPublicUrl } from "./logo";
 
 let client: ServerClient | null = null;
 
@@ -17,13 +17,16 @@ export async function sendConfirmationEmail(
   email: string
 ): Promise<void> {
   const fromEmail = process.env.POSTMARK_FROM_EMAIL || "sorteo@gastrosinergia.info";
-  const htmlBody = buildConfirmationEmail(nombre);
+  const firstName = nombre.split(" ")[0];
 
-  await getClient().sendEmail({
+  await getClient().sendEmailWithTemplate({
     From: fromEmail,
     To: email,
-    Subject: `¡Estás participando, ${nombre.split(" ")[0]}! — Sorteo Gastro Sinergia`,
-    HtmlBody: htmlBody,
+    TemplateAlias: "sorteo-confirmacion",
+    TemplateModel: {
+      firstName,
+      logoUrl: getLogoPublicUrl(),
+    },
     MessageStream: "outbound",
   });
 }

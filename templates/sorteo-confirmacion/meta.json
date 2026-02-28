@@ -1,0 +1,6 @@
+{
+  "Name": "Sorteo Confirmación",
+  "Alias": "sorteo-confirmacion",
+  "Subject": "¡Estás participando, {{firstName}}! — Sorteo Gastro Sinergia",
+  "TemplateType": "Standard"
+}

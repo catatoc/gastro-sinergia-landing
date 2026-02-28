@@ -1,10 +1,4 @@
-import { getLogoPublicUrl } from "./logo";
-
-export function buildConfirmationEmail(nombre: string): string {
-  const firstName = nombre.split(" ")[0];
-  const logoUrl = getLogoPublicUrl();
-
-  return `<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -20,13 +14,13 @@ export function buildConfirmationEmail(nombre: string): string {
           <!-- Header -->
           <tr>
             <td style="background:#faf9f7;padding:28px 32px 20px;text-align:center;">
-              <img src="${logoUrl}" alt="Gastro Sinergia" width="220" style="width:220px;height:auto;display:block;margin:0 auto;" />
+              <img src="{{logoUrl}}" alt="Gastro Sinergia" width="220" style="width:220px;height:auto;display:block;margin:0 auto;" />
             </td>
           </tr>
           <tr>
             <td style="background:#17324a;padding:28px 32px 28px;text-align:center;">
               <h1 style="margin:0;font-size:24px;font-weight:600;color:#ffffff;line-height:1.3;">
-                ¡Estás participando, <span style="color:#f27d3a;">${firstName}</span>!
+                ¡Estás participando, <span style="color:#f27d3a;">{{firstName}}</span>!
               </h1>
             </td>
           </tr>
@@ -90,5 +84,4 @@ export function buildConfirmationEmail(nombre: string): string {
     </tr>
   </table>
 </body>
-</html>`;
-}
+</html>
