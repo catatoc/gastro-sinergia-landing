@@ -16,15 +16,33 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://gastrosinergia.info"),
   title: "Gastro Sinergia — Centro de Estudios Gastronómicos",
   description:
     "Formación integral con experiencia real y competencias que transforman tu futuro en la gastronomía. Caracas, Venezuela.",
+  keywords: [
+    "gastronomía",
+    "cocina",
+    "formación culinaria",
+    "Caracas",
+    "Venezuela",
+    "estudios gastronómicos",
+    "Gastro Sinergia",
+  ],
   openGraph: {
     title: "Gastro Sinergia — Centro de Estudios Gastronómicos",
     description:
       "Formación integral con experiencia real y competencias que transforman tu futuro en la gastronomía.",
     type: "website",
     locale: "es_VE",
+    siteName: "Gastro Sinergia",
+    url: "https://gastrosinergia.info",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gastro Sinergia — Centro de Estudios Gastronómicos",
+    description:
+      "Formación integral con experiencia real y competencias que transforman tu futuro en la gastronomía. Caracas, Venezuela.",
   },
 };
 
