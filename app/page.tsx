@@ -2,7 +2,7 @@ import { Hero } from "@/components/hero";
 import { SorteoBanner } from "@/components/sorteo-banner";
 import { RegistrationForm } from "@/components/registration-form";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
-import { LOGO_BASE64 } from "@/lib/logo";
+import { LOGO_URL } from "@/lib/logo";
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
       <footer>
         <img
           className="footer-logo"
-          src={LOGO_BASE64}
+          src={LOGO_URL}
           alt="Gastro Sinergia"
           style={{ display: "inline-block" }}
         />

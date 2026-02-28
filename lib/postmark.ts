@@ -1,5 +1,6 @@
 import { ServerClient } from "postmark";
-import { getLogoPublicUrl } from "./logo";
+
+const LOGO_URL = "https://amedi.sfo3.cdn.digitaloceanspaces.com/gastrosinergia/logo_transparent.png";
 
 let client: ServerClient | null = null;
 
@@ -25,7 +26,7 @@ export async function sendConfirmationEmail(
     TemplateAlias: "sorteo-confirmacion",
     TemplateModel: {
       firstName,
-      logoUrl: getLogoPublicUrl(),
+      logoUrl: LOGO_URL,
     },
     MessageStream: "outbound",
   });

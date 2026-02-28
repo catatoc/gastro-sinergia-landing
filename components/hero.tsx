@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element */
 
-import { LOGO_BASE64 } from "@/lib/logo";
+import { LOGO_URL } from "@/lib/logo";
 
 export function Hero() {
   return (
@@ -19,7 +19,7 @@ export function Hero() {
       <div className="hero-inner">
         <div className="logo-container">
           <img
-            src={LOGO_BASE64}
+            src={LOGO_URL}
             alt="Gastro Sinergia — Centro de Estudios Gastronómicos"
           />
         </div>
