@@ -66,6 +66,13 @@ export function buildConfirmationEmail(firstName: string): string {
                     </a>
                   </td>
                 </tr>
+                <tr>
+                  <td align="center" style="padding:16px 0 0;">
+                    <a href="https://gastrosinergia.info/nosotros" target="_blank" rel="noopener" style="font-size:14px;font-weight:500;color:#2d9e90;text-decoration:none;">
+                      Conoce nuestra propuesta &rarr;
+                    </a>
+                  </td>
+                </tr>
               </table>
             </td>
           </tr>
@@ -75,6 +82,9 @@ export function buildConfirmationEmail(firstName: string): string {
             <td style="padding:24px 32px;border-top:1px solid rgba(23,50,74,0.07);text-align:center;">
               <p style="margin:0;font-size:12px;color:#8c8c8c;line-height:1.6;">
                 Gastro Sinergia · Centro de Estudios Gastronómicos · Caracas, Venezuela
+              </p>
+              <p style="margin:8px 0 0;font-size:12px;font-style:italic;color:#8c8c8c;line-height:1.6;">
+                Porque la cocina no solo se enseña. Se vive, se piensa y se comparte.
               </p>
               <p style="margin:8px 0 0;font-size:11px;color:#bbbbbb;">
                 Recibiste este correo porque te registraste en nuestro sorteo.

@@ -72,6 +72,12 @@ export function Hero() {
               <path d="M12 5v14M19 12l-7 7-7-7" />
             </svg>
           </a>
+          <a
+            href="/nosotros"
+            className="link-secondary"
+          >
+            Conoce nuestra propuesta
+          </a>
         </div>
       </div>
 

@@ -25,6 +25,8 @@ export default function Home() {
           style={{ display: "inline-block" }}
         />
         <p>Gastro Sinergia · Centro de Estudios Gastronómicos · Caracas</p>
+        <p className="footer-tagline">Porque la cocina no solo se enseña. Se vive, se piensa y se comparte.</p>
+        <a href="/nosotros" className="footer-link">Conoce nuestra propuesta</a>
       </footer>
     </>
   );
