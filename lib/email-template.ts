@@ -32,7 +32,7 @@ export function buildConfirmationEmail(firstName: string): string {
           <tr>
             <td style="padding:32px;">
               <p style="margin:0 0 16px;font-size:15px;line-height:1.7;color:#555555;">
-                Gracias por registrarte en el sorteo de <strong style="color:#1e1e1e;">Gastro Sinergia</strong>. Ya estás dentro para ganar uno de nuestros cupos gratuitos.
+                Gracias por registrarte en el sorteo de <strong style="color:#1e1e1e;">Gastro Sinergia</strong>. Ya estás dentro para ganar la oportunidad de vivir una experiencia diseñada alrededor de la cocina.
               </p>
 
               <!-- Stats -->

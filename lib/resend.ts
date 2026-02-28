@@ -17,7 +17,7 @@ export async function sendConfirmationEmail(
   email: string
 ): Promise<void> {
   const fromAddress = process.env.RESEND_FROM_EMAIL || "sorteo@gastrosinergia.info";
-  const fromEmail = `Gastrosinergia <${fromAddress}>`;
+  const fromEmail = `Gastro Sinergia <${fromAddress}>`;
   const firstName = nombre.split(" ")[0];
 
   await getClient().emails.send({

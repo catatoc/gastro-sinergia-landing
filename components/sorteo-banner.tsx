@@ -13,8 +13,8 @@ export function SorteoBanner() {
       </h2>
 
       <p className="sorteo-desc">
-        Una oportunidad única para vivir la experiencia Gastro Sinergia sin
-        costo. Déjanos tus datos y entras automáticamente.
+        Una oportunidad única para vivir el proceso. Cada actividad está
+        diseñada para construir comunidad alrededor de la cocina.
       </p>
 
       <div className="stats-row">

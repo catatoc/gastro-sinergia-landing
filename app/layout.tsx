@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://gastrosinergia.info"),
   title: "Gastro Sinergia — Centro de Estudios Gastronómicos",
   description:
-    "Formación integral con experiencia real y competencias que transforman tu futuro en la gastronomía. Caracas, Venezuela.",
+    "Diseñamos experiencias que transforman. La cocina como medio para desarrollar criterio, confianza y cultura gastronómica. Caracas, Venezuela.",
   keywords: [
     "gastronomía",
     "cocina",
@@ -28,11 +28,13 @@ export const metadata: Metadata = {
     "Venezuela",
     "estudios gastronómicos",
     "Gastro Sinergia",
+    "experiencias gastronómicas",
+    "cultura gastronómica",
   ],
   openGraph: {
     title: "Gastro Sinergia — Centro de Estudios Gastronómicos",
     description:
-      "Formación integral con experiencia real y competencias que transforman tu futuro en la gastronomía.",
+      "Diseñamos experiencias que transforman. La cocina como medio para desarrollar criterio, confianza y cultura gastronómica.",
     type: "website",
     locale: "es_VE",
     siteName: "Gastro Sinergia",
@@ -42,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gastro Sinergia — Centro de Estudios Gastronómicos",
     description:
-      "Formación integral con experiencia real y competencias que transforman tu futuro en la gastronomía. Caracas, Venezuela.",
+      "Diseñamos experiencias que transforman. La cocina como medio para desarrollar criterio, confianza y cultura gastronómica. Caracas, Venezuela.",
   },
 };
 

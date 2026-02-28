@@ -25,20 +25,20 @@ export function Hero() {
         </div>
 
         <h1 className="hero-headline">
-          La cocina como
+          Diseñamos
           <br />
-          <span className="accent">metodología</span> de aprendizaje
+          <span className="accent">experiencias</span> que transforman
         </h1>
 
         <p className="hero-p">
-          Formación integral con experiencia real y competencias que transforman
-          tu futuro en la gastronomía.
+          La cocina como medio para desarrollar criterio, confianza y cultura
+          gastronómica. Desde niños hasta adultos.
         </p>
 
         <div className="chips">
-          <span className="chip">Formación</span>
-          <span className="chip">Experiencia</span>
-          <span className="chip">Competencias</span>
+          <span className="chip">Criterio</span>
+          <span className="chip">Confianza</span>
+          <span className="chip">Cultura</span>
         </div>
 
         <div className="location-tag">
