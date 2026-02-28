@@ -102,7 +102,7 @@ export function RegistrationForm() {
         setCountryCode("+58");
         setIsSubmitting(false);
         setErrors({});
-        document.getElementById("sorteo")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }, 5000);
     } catch (err) {
       setSubmitError(
