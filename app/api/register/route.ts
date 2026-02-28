@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
-import { sendConfirmationEmail } from "@/lib/postmark";
+import { sendConfirmationEmail } from "@/lib/resend";
 import { appendToSheet } from "@/lib/google-sheets";
 
 const registerSchema = z.object({
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     const sheetsResult = results[1];
 
     if (emailResult.status === "rejected") {
-      console.error("Postmark error:", emailResult.reason);
+      console.error("Resend error:", emailResult.reason);
     }
     if (sheetsResult.status === "rejected") {
       console.error("Google Sheets error:", sheetsResult.reason);
