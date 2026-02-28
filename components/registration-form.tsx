@@ -92,6 +92,18 @@ export function RegistrationForm() {
       setIsSuccess(true);
       spawnConfetti();
       formCardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      setTimeout(() => {
+        setIsSuccess(false);
+        setSuccessName("");
+        setNombre("");
+        setEmail("");
+        setTelefono("");
+        setCountryCode("+58");
+        setIsSubmitting(false);
+        setErrors({});
+        document.getElementById("sorteo")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 5000);
     } catch (err) {
       setSubmitError(
         err instanceof Error ? err.message : "Error al registrar. Intenta de nuevo."

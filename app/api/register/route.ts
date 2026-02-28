@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { sendConfirmationEmail } from "@/lib/resend";
-import { appendToSheet } from "@/lib/google-sheets";
+import { appendToNotion } from "@/lib/notion";
 
 const registerSchema = z.object({
   nombre: z.string().min(1, "Nombre es requerido").trim(),
@@ -22,17 +22,20 @@ export async function POST(request: Request) {
 
     const results = await Promise.allSettled([
       sendConfirmationEmail(data.nombre, data.email),
-      appendToSheet(data),
+      appendToNotion({
+        ...data,
+        telefono: data.telefono.replace(/[+\s]/g, ""),
+      }),
     ]);
 
     const emailResult = results[0];
-    const sheetsResult = results[1];
+    const notionResult = results[1];
 
     if (emailResult.status === "rejected") {
       console.error("Resend error:", emailResult.reason);
     }
-    if (sheetsResult.status === "rejected") {
-      console.error("Google Sheets error:", sheetsResult.reason);
+    if (notionResult.status === "rejected") {
+      console.error("Notion error:", notionResult.reason);
     }
 
     // Return success even if one service fails - the registration is recorded
