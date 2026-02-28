@@ -20,6 +20,13 @@ export async function POST(request: Request) {
     const body = await request.json();
     const data = registerSchema.parse(body);
 
+    console.log("[REGISTRO]", JSON.stringify({
+      timestamp: new Date().toISOString(),
+      nombre: data.nombre,
+      email: data.email,
+      telefono: data.telefono,
+    }));
+
     const results = await Promise.allSettled([
       sendConfirmationEmail(data.nombre, data.email),
       appendToNotion({
@@ -32,10 +39,21 @@ export async function POST(request: Request) {
     const notionResult = results[1];
 
     if (emailResult.status === "rejected") {
-      console.error("Resend error:", emailResult.reason);
+      console.error("[REGISTRO][EMAIL_FAIL]", JSON.stringify({
+        timestamp: new Date().toISOString(),
+        nombre: data.nombre,
+        email: data.email,
+        error: String(emailResult.reason),
+      }));
     }
     if (notionResult.status === "rejected") {
-      console.error("Notion error:", notionResult.reason);
+      console.error("[REGISTRO][NOTION_FAIL]", JSON.stringify({
+        timestamp: new Date().toISOString(),
+        nombre: data.nombre,
+        email: data.email,
+        telefono: data.telefono,
+        error: String(notionResult.reason),
+      }));
     }
 
     // Return success even if one service fails - the registration is recorded
@@ -48,7 +66,10 @@ export async function POST(request: Request) {
       );
     }
 
-    console.error("Registration error:", error);
+    console.error("[REGISTRO][FATAL]", JSON.stringify({
+      timestamp: new Date().toISOString(),
+      error: String(error),
+    }));
     return NextResponse.json(
       { error: "Error interno del servidor" },
       { status: 500 }
