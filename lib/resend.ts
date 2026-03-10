@@ -1,5 +1,5 @@
 import { Resend } from "resend";
-import { buildConfirmationEmail } from "./email-template";
+import { buildConfirmationEmail, buildWinnerEmail } from "./email-template";
 
 let client: Resend | null = null;
 
@@ -25,5 +25,22 @@ export async function sendConfirmationEmail(
     to: email,
     subject: `¡Estás participando, ${firstName}! — Sorteo Gastro Sinergia`,
     html: buildConfirmationEmail(firstName),
+  });
+}
+
+export async function sendWinnerEmail(
+  nombre: string,
+  email: string,
+  taller: 1 | 2 = 1
+): Promise<void> {
+  const fromAddress = process.env.RESEND_FROM_EMAIL || "sorteo@gastrosinergia.info";
+  const fromEmail = `Gastro Sinergia <${fromAddress}>`;
+  const firstName = nombre.split(" ")[0];
+
+  await getClient().emails.send({
+    from: fromEmail,
+    to: email,
+    subject: `GOLDEN TICKET — ${firstName}, ganaste un cupo en el Taller de Panaderia!`,
+    html: buildWinnerEmail(firstName, taller),
   });
 }

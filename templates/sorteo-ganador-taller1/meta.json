@@ -1,0 +1,6 @@
+{
+  "Name": "Sorteo Ganador - Taller 1",
+  "Alias": "sorteo-ganador-taller1",
+  "Subject": "GOLDEN TICKET — {{firstName}}, ganaste un cupo en el Taller de Panaderia!",
+  "TemplateType": "Standard"
+}

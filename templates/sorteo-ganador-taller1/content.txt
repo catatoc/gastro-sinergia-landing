@@ -1,0 +1,12 @@
+GOLDEN TICKET
+
+Felicidades, {{firstName}}! Has ganado un cupo para participar en un Taller de Panaderia.
+
+Fecha: 16 de marzo 2026
+Hora: 04:30 pm
+
+Por favor confirma tu asistencia respondiendo a este correo o escribiendo a Info@gastrosinergia.com
+
+---
+Gastro Sinergia - Centro de Estudios Gastronomicos - Caracas, Venezuela
+Porque la cocina no solo se ensena. Se vive, se piensa y se comparte.

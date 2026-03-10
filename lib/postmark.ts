@@ -28,3 +28,22 @@ export async function sendConfirmationEmail(
     MessageStream: "outbound",
   });
 }
+
+export async function sendWinnerEmail(
+  nombre: string,
+  email: string,
+  templateAlias: string = "sorteo-ganador-taller1"
+): Promise<void> {
+  const fromEmail = process.env.POSTMARK_FROM_EMAIL || "sorteo@gastrosinergia.info";
+  const firstName = nombre.split(" ")[0];
+
+  await getClient().sendEmailWithTemplate({
+    From: fromEmail,
+    To: email,
+    TemplateAlias: templateAlias,
+    TemplateModel: {
+      firstName,
+    },
+    MessageStream: "outbound",
+  });
+}

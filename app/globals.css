@@ -843,6 +843,370 @@ footer p {
 }
 
 /* ══════════════════════════════════════════════
+   RAFFLE PAGE
+   ══════════════════════════════════════════════ */
+.raffle-page {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: var(--cream);
+  overflow: hidden;
+}
+
+.raffle-header {
+  background: var(--navy);
+  padding: 1.25rem 1.5rem 1.5rem;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  flex-shrink: 0;
+}
+.raffle-header::before {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 90% 20%, rgba(229,101,28,0.2) 0%, transparent 50%),
+    radial-gradient(circle at 10% 80%, rgba(45,158,144,0.15) 0%, transparent 50%);
+  animation: bannerBreath 8s ease-in-out infinite;
+}
+.raffle-header-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.raffle-footer-logo {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0 1.5rem;
+}
+.raffle-footer-logo img {
+  width: 130px;
+  height: auto;
+  display: block;
+  opacity: 0.15;
+  filter: grayscale(1);
+  image-rendering: -webkit-optimize-contrast;
+}
+.raffle-header .badge {
+  margin-bottom: 0.6rem;
+}
+.raffle-header-title {
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.4rem;
+}
+.raffle-header-title span {
+  color: var(--orange-glow);
+  font-style: italic;
+}
+.raffle-header-desc {
+  font-size: 0.8rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.72);
+  margin-bottom: 0.75rem;
+}
+.raffle-header .stat {
+  padding: 0.6rem 0.5rem;
+}
+.raffle-header .stat-number {
+  font-size: 1.4rem;
+}
+
+.raffle-main {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  overflow: hidden;
+  display: flex;
+  min-height: 0;
+}
+
+/* Raffle machine */
+.raffle-machine {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+}
+
+/* Floating bakery decorations */
+.bakery-decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.bakery-float {
+  position: absolute;
+  font-size: 1.8rem;
+  opacity: 0.12;
+  will-change: transform;
+}
+.bakery-float-1 { top: 2%; left: 3%; animation: bakeryDrift1 18s ease-in-out infinite; }
+.bakery-float-2 { top: 8%; right: 5%; animation: bakeryDrift2 22s ease-in-out infinite; }
+.bakery-float-3 { top: 40%; left: -2%; animation: bakeryDrift1 25s ease-in-out infinite reverse; }
+.bakery-float-4 { top: 55%; right: 0%; animation: bakeryDrift2 20s ease-in-out infinite reverse; }
+.bakery-float-5 { bottom: 15%; left: 5%; animation: bakeryDrift1 23s ease-in-out infinite; }
+.bakery-float-6 { bottom: 5%; right: 8%; animation: bakeryDrift2 19s ease-in-out infinite; }
+
+@keyframes bakeryDrift1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(12px, -18px) rotate(8deg); }
+  50% { transform: translate(-6px, -30px) rotate(-4deg); }
+  75% { transform: translate(-16px, -12px) rotate(5deg); }
+}
+@keyframes bakeryDrift2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-14px, -12px) rotate(-6deg); }
+  50% { transform: translate(8px, -24px) rotate(5deg); }
+  75% { transform: translate(18px, -8px) rotate(-3deg); }
+}
+
+/* Slot machine display */
+.raffle-slot-section {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1rem;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.slot-display {
+  background: var(--navy);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 8px 32px rgba(23,50,74,0.18);
+}
+
+.slot-item {
+  padding: 0.6rem 1rem;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.slot-item:last-child { border-bottom: none; }
+
+.slot-item.shuffling {
+  color: rgba(255,255,255,0.5);
+  filter: blur(0.5px);
+}
+
+.slot-item.locked {
+  color: var(--orange-glow);
+  font-weight: 700;
+  font-size: 1.05rem;
+  background: rgba(229,101,28,0.1);
+  border-left: 4px solid var(--gold);
+  animation: raffleLockIn 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes raffleLockIn {
+  0% { transform: scale(1); background: transparent; }
+  50% { transform: scale(1.06); background: rgba(229,101,28,0.15); }
+  100% { transform: scale(1); background: rgba(229,101,28,0.1); }
+}
+
+/* Start button */
+.raffle-start-btn {
+  width: 100%;
+  padding: 1.15rem 1.5rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--orange), var(--orange-glow));
+  color: #fff;
+  font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 4px 20px rgba(229,101,28,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  position: relative;
+  overflow: hidden;
+  animation: rafflePulseGlow 2s ease-in-out infinite;
+}
+.raffle-start-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.15) 100%);
+  pointer-events: none;
+}
+.raffle-start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(229,101,28,0.35);
+}
+.raffle-start-btn:active {
+  transform: translateY(0);
+}
+.raffle-btn-emoji {
+  font-size: 1.3rem;
+}
+
+@keyframes rafflePulseGlow {
+  0%, 100% { box-shadow: 0 4px 20px rgba(229,101,28,0.25); }
+  50% { box-shadow: 0 4px 28px rgba(229,101,28,0.45), 0 0 12px rgba(229,101,28,0.15); }
+}
+
+/* Status indicator */
+.raffle-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.raffle-status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+/* Winners section */
+.raffle-winners-section {
+  position: relative;
+  z-index: 1;
+}
+.raffle-winners-title {
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-align: center;
+  margin-bottom: 0.6rem;
+}
+
+.winners-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.winner-card {
+  background: var(--surface);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 12px rgba(23,50,74,0.06);
+  border: 1px solid var(--border);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  opacity: 0;
+}
+.winner-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(23,50,74,0.1);
+}
+.winner-card.entering {
+  animation: raffleWinnerPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.winner-emoji {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+.winner-number {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--orange));
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.winner-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.3;
+  min-width: 0;
+}
+
+@keyframes raffleWinnerPop {
+  0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+  60% { transform: scale(1.06) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Complete state */
+.raffle-complete {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-top: 1rem;
+}
+.raffle-complete-message {
+  animation: revealUp 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.raffle-complete-message h3 {
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+}
+.raffle-complete-message p {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  font-weight: 300;
+}
+.raffle-complete-message p strong {
+  font-weight: 700;
+  color: var(--orange);
+}
+
+.raffle-reset-btn {
+  margin-top: 1.25rem;
+  padding: 0.75rem 2rem;
+  border: 2px solid var(--navy);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--navy);
+  font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.raffle-reset-btn:hover {
+  background: var(--navy);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ══════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════ */
 @media (min-width: 640px) {
@@ -857,8 +1221,13 @@ footer p {
   .stat-number { font-size: 2.2rem; }
   .country-select-wrap { width: 110px; }
   .nosotros-title { font-size: 1.8rem; }
+  .raffle-header { padding: 1.5rem 2rem 1.75rem; }
+  .raffle-header-title { font-size: 1.8rem; }
+  .raffle-main { padding: 1.25rem 2rem; }
+  .winners-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (min-width: 1024px) {
   .sorteo-wrapper { max-width: 520px; }
+  .winners-grid { grid-template-columns: repeat(4, 1fr); }
 }
